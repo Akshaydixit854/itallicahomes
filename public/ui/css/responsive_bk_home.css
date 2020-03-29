@@ -1,0 +1,100 @@
+@media only screen and (max-width:1100px)
+{
+	ul.menu-list > li{padding:0 25px 0;}
+	.blog-inner-content{padding:80% 30px 0;}
+}
+@media only screen and (min-width:1025px)
+{
+	ul.menu-list>li > ul  {-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;background: #009246 none repeat scroll 0 0;border-color: currentcolor rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.5);border-image: none;border-style: none solid solid;border-width: medium 1px 1px;opacity:0;padding: 0;position: absolute;visibility: hidden;top:100%;/*width:100%;*/z-index: 100;transition: all 700ms ease 0s;left:0;}
+	ul.menu-list > li:hover ul{ visibility: visible;opacity:1;  }
+	ul.menu-list > li > ul > li:hover > ul{visibility: visible !important;opacity:1;}
+}
+@media only screen and (max-width:1024px)
+{
+	.blog-inner-content{padding:300px 30px 0;}
+	.blog-images{max-height:260px;height:260px;}
+	#menuBtn{display:inline-block;}
+	ul.menu-list {z-index: 9;width: 100%;float: left;background:#051d1d;position: fixed;height: 100%;left:-250px;padding:6px 0;width: 240px;top:0px;}
+	.menuvisible{left:0px !important;}
+	.sub-menu-icon{color:#fff;position: absolute;right: 20px;top: 3px;height: 26px;width: 30px;text-align: center;margin: -3px 0 14px 0;display: inline-block;cursor: pointer;}
+	ul.menu-list > li{padding:0 10px;width:100%;}
+	ul.menu-list > li>a{display: inline-flex;width:100%;padding:4px 10px;color:#fff;}
+	ul.menu-list > li>a i{padding: 0px 10px 0 0;margin: -1px 0 0 0;color:#fff;}
+	ul.menu-list > li > ul::before{display:none;}
+	ul.menu-list > li:first-child > a > i{margin:-5px 0 0 0;}
+	ul.menu-list > li > ul{position:relative;background:transparent;border:none;display:none;}
+	ul.menu-list > li > ul > li > ul{position: relative;right: 0px;top: 0px;color: #fff;background: transparent;display:none;visibility:visible !important;}
+	ul.menu-list > li > ul > li > i{-ms-transform: rotate(0deg);-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+	.properties-type-wrapper{display:inline-block;}
+	.properties-type-inner-wrapper{display:inline-block;}
+	.properties-slider{margin:0px;padding:0 0 0 30px;}
+	.houses-properties-img{display:none;}
+	.properties-id-block{display:inline-block;}
+	ul.single-properties-share{width:100%;}
+	ul.single-properties-price > li:nth-child(1){width:100%;}
+	ul.single-properties-price > li{float:none;}
+	ul.properties-amenities-list > li{width:calc(99%/2);}
+	.res-properties-view{width:100% !important;max-width: 100% !important;flex: 100%;}
+	.properties-map-section {float: left;width: 100%;max-width: 100%;display: inline-flex;position: relative;right: 0;margin-top: 30px;}
+	ul.properties-filter-more>li{display:inline-flex;width: calc(100%/3);margin: 0 0px 10px 0;float:left;}
+	ul.properties-filter-more>li:last-child{margin:0 0 0 0px;}
+	.map-arrow-btn{display:none;}
+	.panel-container{display:inline-block;width:auto;}
+	.property-view-map{height:500px;}
+}
+
+@media only screen and (max-width:786px)
+{
+	.responsive-logo{width: 50%;}
+	.responsive-menu{width: 50%;}
+	.map-point{display:none;}
+	.search-bar-form{padding:40px 1%;}
+	.logo{float:left;}
+	.blog-inner-content{padding:331px 24px 0;}
+	.properties-slider-wrapper{display:inline-block;}
+	.properties-des{padding: 16px 40px 0;width:100%;}
+	.properties-slider{width:100%;padding:14px 30px 0 30px;}
+	ul.custom-properties-slider > li img {overflow: hidden;border-radius: 24px;width: 100% !important;}
+	.houses-properties{padding:0px;}
+	.properties-type-wrapper{padding:0px 30px 80px;}
+	.ul.properties-custome-detail > li{width:100%;}
+	.singla-properties-content > p{padding:0px 10px 46px 10px;}
+	.single-about-us-banner{padding:70px 0 0;}
+	.properties-searchbar-block > span {display: inline-block;width: 320px;}
+	ul.search-newest-filter{width:100%;float:right;}
+	ul.search-bed-filter > li{width: calc(100%/3) !important;margin:0px !important;float:left;}
+	ul.search-bed-filter > li:first-child{width:auto;}
+	ul.search-bed-filter{width:100%;float:left;}
+
+}
+
+@media only screen and (max-width:600px)
+{
+	ul.contant-form-field > li:last-child{position:relative;width:100%;padding: 0 0px 20px 0px;}
+	ul.contant-form-field > li{width:100%;padding: 0 0px 20px 0px;}
+	ul.properties-amenities-list > li{width:calc(99%/1);}
+	ul.properties-filter-more>li{display:inline-flex;width: calc(100%/1);margin: 0 0px 10px 0;float:left;}
+	.search-property-bg-img {padding: 50px 0;height: 420px;}
+	.properties-searchbar-block{display:inline-block;}
+	.properties-searchbar-block > span{width:100%;margin-bottom:8px;}
+	.properties-searchbar-block > span select{border-radius:24px;}
+	.properties-searchbar-block > abbr{border-radius:24px;margin:0 0 10px 0;}
+	.properties-searchbar-block > em {font-style: normal;width: 100%;float: left;margin-top: 12px;margin-bottom:12px;}
+	.search-property-bg-img{height:550px;}
+}
+@media only screen and (max-width:480px)
+{
+	.blog-inner-content{padding:92% 30px 0;}
+	.blog-images{max-height: 266px;}
+	ul.search-bed-filter > li{width: calc(100%/1) !important;margin:0px 0px 10px !important;float:left;}
+	ul.search-bed-filter > li:first-child{width:auto;}
+	ul.search-bed-filter{width:100%;float:left;}
+	ul.search-newest-filter > li{width: calc(100%/1) !important;}
+	ul.search-newest-filter > li > em{margin:0px auto;}
+}
+
+@media only screen and (max-width:392px)
+{
+		ul.blog-share-section > li:last-child {float: left;padding: 0px;display: block;width: 100%;}
+		.blog-images{max-height:190px;}
+}

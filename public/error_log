@@ -1,0 +1,4 @@
+[26-Feb-2019 05:30:38 America/Phoenix] PHP Notice:  Undefined index: OS in /home/i2one8pw006h/public_html/italicahomes.com/italica/public/mail_test.php on line 3525
+[26-Feb-2019 05:35:02 America/Phoenix] PHP Notice:  Undefined index: OS in /home/i2one8pw006h/public_html/italicahomes.com/italica/public/mail_test.php on line 3525
+[26-Feb-2019 05:45:27 America/Phoenix] PHP Notice:  Undefined index: OS in /home/i2one8pw006h/public_html/italicahomes.com/italica/public/mail_test.php on line 3525
+[25-Mar-2019 10:54:41 UTC] PHP Fatal error:  Class 'PHPAuth\Controller' not found in /home/i2one8pw006h/public_html/italicahomes.com/italica/app/Http/Controllers/IndexController.php on line 44
