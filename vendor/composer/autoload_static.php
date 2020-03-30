@@ -563,7 +563,7 @@ class ComposerStaticInit0cd90f0ba6e45951fbbb2a2a7f10bca7
         'App\\Http\\Controllers\\EditorAuth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/EditorAuth/RegisterController.php',
         'App\\Http\\Controllers\\EditorAuth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/EditorAuth/ResetPasswordController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
-        'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/backup/IndexController.php',
+        'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',
         'App\\Http\\Controllers\\LocalizationController' => __DIR__ . '/../..' . '/app/Http/Controllers/LocalizationController.php',
         'App\\Http\\Controllers\\OtherAuth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/OtherAuth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\OtherAuth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/OtherAuth/LoginController.php',

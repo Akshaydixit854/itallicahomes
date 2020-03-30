@@ -68,7 +68,7 @@ return array(
     'App\\Http\\Controllers\\EditorAuth\\RegisterController' => $baseDir . '/app/Http/Controllers/EditorAuth/RegisterController.php',
     'App\\Http\\Controllers\\EditorAuth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/EditorAuth/ResetPasswordController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
-    'App\\Http\\Controllers\\IndexController' => $baseDir . '/app/Http/Controllers/backup/IndexController.php',
+    'App\\Http\\Controllers\\IndexController' => $baseDir . '/app/Http/Controllers/IndexController.php',
     'App\\Http\\Controllers\\LocalizationController' => $baseDir . '/app/Http/Controllers/LocalizationController.php',
     'App\\Http\\Controllers\\OtherAuth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/OtherAuth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\OtherAuth\\LoginController' => $baseDir . '/app/Http/Controllers/OtherAuth/LoginController.php',
