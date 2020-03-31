@@ -4778,23 +4778,23 @@
     },
     {
         "name": "symfony/css-selector",
-        "version": "v5.0.6",
-        "version_normalized": "5.0.6.0",
+        "version": "v5.0.7",
+        "version_normalized": "5.0.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/css-selector.git",
-            "reference": "1d13e7da72fb04e666e18b3c109d3ae039e8bcfe"
+            "reference": "5f8d5271303dad260692ba73dfa21777d38e124e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/css-selector/zipball/1d13e7da72fb04e666e18b3c109d3ae039e8bcfe",
-            "reference": "1d13e7da72fb04e666e18b3c109d3ae039e8bcfe",
+            "url": "https://api.github.com/repos/symfony/css-selector/zipball/5f8d5271303dad260692ba73dfa21777d38e124e",
+            "reference": "5f8d5271303dad260692ba73dfa21777d38e124e",
             "shasum": ""
         },
         "require": {
             "php": "^7.2.5"
         },
-        "time": "2020-03-16T12:10:54+00:00",
+        "time": "2020-03-27T16:56:45+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -4891,17 +4891,17 @@
     },
     {
         "name": "symfony/event-dispatcher",
-        "version": "v4.4.6",
-        "version_normalized": "4.4.6.0",
+        "version": "v4.4.7",
+        "version_normalized": "4.4.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/event-dispatcher.git",
-            "reference": "cf57788d1ca64ee7e689698dc0295d25c9fe3780"
+            "reference": "abc8e3618bfdb55e44c8c6a00abd333f831bbfed"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/cf57788d1ca64ee7e689698dc0295d25c9fe3780",
-            "reference": "cf57788d1ca64ee7e689698dc0295d25c9fe3780",
+            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/abc8e3618bfdb55e44c8c6a00abd333f831bbfed",
+            "reference": "abc8e3618bfdb55e44c8c6a00abd333f831bbfed",
             "shasum": ""
         },
         "require": {
@@ -4928,7 +4928,7 @@
             "symfony/dependency-injection": "",
             "symfony/http-kernel": ""
         },
-        "time": "2020-03-16T11:24:17+00:00",
+        "time": "2020-03-27T16:54:36+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

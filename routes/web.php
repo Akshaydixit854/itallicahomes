@@ -224,6 +224,7 @@ Route::group(['prefix' => 'admin','middleware' => ['role:superadmin|admin|user']
     Route::post('inbox/{id}/{status}', 'Admin\IndexAdminController@inboxStatus');
     Route::resource('properties', 'Admin\PropertiesController');
     Route::resource('settings', 'Admin\SettingsController');
+    Route::resource('general-settings','Admin\AdminSettingController');
 
     Route::get('general_index', 'Admin\IndexAdminController@general_index');
     Route::get('general_mark/read/{id}', 'Admin\IndexAdminController@general_mark');
