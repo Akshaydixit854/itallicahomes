@@ -32,11 +32,11 @@
 
 
 <?php $__env->stopSection(); ?>
-<?php if(Session::has('message')): ?>
-    <p class="alert <?php echo e(Session::get('alert-class', 'alert-info')); ?>"><?php echo e(Session::get('message')); ?></p>
-<?php endif; ?>
 <?php $__env->startSection('content'); ?>
     <div class="container-fluid">
+        <?php if(Session::has('message')): ?>
+            <p class="alert <?php echo e(Session::get('alert-class', 'alert-info')); ?>"><?php echo e(Session::get('message')); ?></p>
+        <?php endif; ?>
         <div class="block-header">
             <h2>Property</h2>
         </div>

@@ -306,7 +306,12 @@ class PropertiesController extends Controller
         $property->meta_description_italian = $request->get('meta_description_italian') != '' ? $request->get('meta_description_italian') : $request->get('meta_description');
         $property->meta_description_german = $request->get('meta_description_german') != '' ? $request->get('meta_description_german') : $request->get('meta_description');
         $property->save();
-
+        
+        //delete privious databse images for this property id
+        $gallery_images = PropertyImageGallery::where('property_id',$property->id)->get();
+        if(isset($gallery_images) && count($gallery_images)>0){
+            PropertyImageGallery::where('property_id',$property->id)->delete();
+        }
         //customized
         if($request->has('ameneties') && !empty($request->ameneties)){
             foreach($request->ameneties as $amenity_id){
@@ -418,7 +423,7 @@ class PropertiesController extends Controller
         $areas = Area::all();
         $selected_ameneties = PropertyAmenities::where('property_id',$id)->pluck('amenity_id')->toArray();
         $amenities = Amenities::all();
-        $gallery_images = PropertyImageGallery::where('property_id',$id)->get();
+        $gallery_images = PropertyImageGallery::where('property_id',$id)->where('temp_id',$property->temp_id)->get();
         $language_line = LanguageLine::where('key','property_'.$id)->first();
         $language_line_title = LanguageLine::where('key','property_title_'.$id)->first();
         $language_line_short_desc  = LanguageLine::where('key','property_short_desc_'.$id)->first();

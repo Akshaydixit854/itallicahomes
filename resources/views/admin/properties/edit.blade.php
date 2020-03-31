@@ -27,11 +27,11 @@
     {{ Html::style('bsbmd/plugins/nouislider/nouislider.min.css') }}
 
 @endsection
-@if(Session::has('message'))
-    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
-@endif
 @section('content')
     <div class="container-fluid">
+        @if(Session::has('message'))
+            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+        @endif
         <div class="block-header">
             <h2>Property</h2>
         </div>
