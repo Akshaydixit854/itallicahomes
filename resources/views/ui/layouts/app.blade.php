@@ -192,16 +192,16 @@
                                 <span>@lang('app.registered_office')</span>
                             </li>
                             <li>
-                                <span>Schömerweg 14 94060 Pocking/Germany</span>
+                                <span>{{(new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('registred_address') ?? 'Schömerweg 14 94060 Pocking/Germany'}}</span>
                             </li>
                             <li>
-                                <span class="pt12">@lang('app.tel') +49 08538 2659988</span>
+                                <span class="pt12">@lang('app.tel') {{(new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('registred_telephone') ?? '+49 08538 2659988'}}</span>
                             </li>
                             <li>
-                                <span class="pt12">@lang('app.fax') +49 0821 9998501223</span>
+                                <span class="pt12">@lang('app.fax') {{(new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('registred_fax') ?? '+49 0821 9998501223'}}</span>
                             </li>
                             <li>
-                                <span class="pt12"><a href="mailto:info@italicahomes.com">info@italicahomes.com</a></span>
+                                <span class="pt12"><a href="mailto:{{(new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('registred_mail') ?? 'info@italicahomes.com'}}">{{(new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('registred_mail') ?? 'info@italicahomes.com'}}</a></span>
                             </li>
                         </ul>
                     </div>
@@ -211,13 +211,13 @@
                                 <span>@lang('app.service_office_italy')</span>
                             </li>
                             <li>
-                                <span>via degli Olmi 31 54100 Massa/Italy</span>
+                                <span>{{(new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('service_address') ?? 'via degli Olmi 31 54100 Massa/Italy'}}</span>
                             </li>
                             <li>
-                                <span class="pt12">@lang('app.tel') +39 0585 807818</span>
+                                <span class="pt12">@lang('app.tel') {{(new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('service_telephone') ?? '+39 0585 807818'}}</span>
                             </li>
                             <li>
-                                <span class="pt12">@lang('app.fax') +39 0585 807 818</span>
+                                <span class="pt12">@lang('app.fax') {{(new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('service_fax') ?? '+39 0585 807 818'}}</span>
                             </li>
                         </ul>
                     </div>
@@ -235,7 +235,7 @@
                 <div class="wrapper">
                     <ul class="footer-menu-home-list">
                         <li>
-                            <a href="{{url(''.__('route.privacy_policy').'')}}">@lang('app.privacy_policy')</a>
+                            <a href={{url(''.__('route.privacy_policy').'')}}>@lang('app.privacy_policy')</a>
                         </li>
                         <li>
                             <a href={{url(''.__('route.terms_conditions').'')}}>@lang('app.terms_use')</a>
@@ -244,7 +244,7 @@
                             <a href={{url(''.__('route.legal_notice').'')}}>@lang('app.legal_notice')</a>
                         </li>
                         <li>
-                            <a href="{{url(''.trans('route.contact').'')}}">@lang('app.contact_us')</a>
+                            <a href={{url(''.trans('route.contact').'')}}>@lang('app.contact_us')</a>
                         </li>
                         <li>
                             <a href="javascript:void(0);">@lang('app.site_map')</a>
@@ -266,8 +266,9 @@
     <!-- Footer End -->
 </div>
 @yield('custom-js')
- <script src="https://kit.fontawesome.com/bce09a172b.js"></script>
+ <!-- <script src="https://kit.fontawesome.com/bce09a172b.js"></script> -->
  
+ {{ Html::script('ui/js/bce09a172b.js') }}
 {{ Html::script('ui/js/jquery.matchHeight-min.js') }}
 
 <!-- Global site tag (gtag.js) - Google Analytistrcs -->

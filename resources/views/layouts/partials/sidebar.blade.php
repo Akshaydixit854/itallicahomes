@@ -167,6 +167,7 @@
                                 <li><a href="{{url('')}}/admin/inbox/unread">Terms & Conditions</a></li>
                                 <li><a href="{{url('')}}/admin/legal_notice/index">Legal Notice</a></li>
                                 <li><a href="{{url('')}}/admin/privacy_policy/index">Privacy Policy</a></li>
+                                <li><a href="{{url('')}}/admin/general-settings">Contact Details</a></li>
                             </ul>
                         </li>
                     </ul>

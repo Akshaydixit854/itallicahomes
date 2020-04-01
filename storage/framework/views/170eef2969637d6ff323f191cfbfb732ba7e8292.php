@@ -192,16 +192,16 @@
                                 <span><?php echo app('translator')->getFromJson('app.registered_office'); ?></span>
                             </li>
                             <li>
-                                <span>Schömerweg 14 94060 Pocking/Germany</span>
+                                <span><?php echo e((new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('registred_address') ?? 'Schömerweg 14 94060 Pocking/Germany'); ?></span>
                             </li>
                             <li>
-                                <span class="pt12"><?php echo app('translator')->getFromJson('app.tel'); ?> +49 08538 2659988</span>
+                                <span class="pt12"><?php echo app('translator')->getFromJson('app.tel'); ?> <?php echo e((new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('registred_telephone') ?? '+49 08538 2659988'); ?></span>
                             </li>
                             <li>
-                                <span class="pt12"><?php echo app('translator')->getFromJson('app.fax'); ?> +49 0821 9998501223</span>
+                                <span class="pt12"><?php echo app('translator')->getFromJson('app.fax'); ?> <?php echo e((new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('registred_fax') ?? '+49 0821 9998501223'); ?></span>
                             </li>
                             <li>
-                                <span class="pt12"><a href="mailto:info@italicahomes.com">info@italicahomes.com</a></span>
+                                <span class="pt12"><a href="mailto:<?php echo e((new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('registred_mail') ?? 'info@italicahomes.com'); ?>"><?php echo e((new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('registred_mail') ?? 'info@italicahomes.com'); ?></a></span>
                             </li>
                         </ul>
                     </div>
@@ -211,13 +211,13 @@
                                 <span><?php echo app('translator')->getFromJson('app.service_office_italy'); ?></span>
                             </li>
                             <li>
-                                <span>via degli Olmi 31 54100 Massa/Italy</span>
+                                <span><?php echo e((new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('service_address') ?? 'via degli Olmi 31 54100 Massa/Italy'); ?></span>
                             </li>
                             <li>
-                                <span class="pt12"><?php echo app('translator')->getFromJson('app.tel'); ?> +39 0585 807818</span>
+                                <span class="pt12"><?php echo app('translator')->getFromJson('app.tel'); ?> <?php echo e((new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('service_telephone') ?? '+39 0585 807818'); ?></span>
                             </li>
                             <li>
-                                <span class="pt12"><?php echo app('translator')->getFromJson('app.fax'); ?> +39 0585 807 818</span>
+                                <span class="pt12"><?php echo app('translator')->getFromJson('app.fax'); ?> <?php echo e((new App\Http\Controllers\Admin\AdminSettingController)->getSettingsValue('service_fax') ?? '+39 0585 807 818'); ?></span>
                             </li>
                         </ul>
                     </div>
@@ -235,7 +235,7 @@
                 <div class="wrapper">
                     <ul class="footer-menu-home-list">
                         <li>
-                            <a href="<?php echo e(url(''.__('route.privacy_policy').'')); ?>"><?php echo app('translator')->getFromJson('app.privacy_policy'); ?></a>
+                            <a href=<?php echo e(url(''.__('route.privacy_policy').'')); ?>><?php echo app('translator')->getFromJson('app.privacy_policy'); ?></a>
                         </li>
                         <li>
                             <a href=<?php echo e(url(''.__('route.terms_conditions').'')); ?>><?php echo app('translator')->getFromJson('app.terms_use'); ?></a>
@@ -244,7 +244,7 @@
                             <a href=<?php echo e(url(''.__('route.legal_notice').'')); ?>><?php echo app('translator')->getFromJson('app.legal_notice'); ?></a>
                         </li>
                         <li>
-                            <a href="<?php echo e(url(''.trans('route.contact').'')); ?>"><?php echo app('translator')->getFromJson('app.contact_us'); ?></a>
+                            <a href=<?php echo e(url(''.trans('route.contact').'')); ?>><?php echo app('translator')->getFromJson('app.contact_us'); ?></a>
                         </li>
                         <li>
                             <a href="javascript:void(0);"><?php echo app('translator')->getFromJson('app.site_map'); ?></a>
@@ -266,8 +266,10 @@
     <!-- Footer End -->
 </div>
 <?php echo $__env->yieldContent('custom-js'); ?>
- <script src="https://kit.fontawesome.com/bce09a172b.js"></script>
+ <!-- <script src="https://kit.fontawesome.com/bce09a172b.js"></script> -->
  
+ <?php echo e(Html::script('ui/js/bce09a172b.js')); ?>
+
 <?php echo e(Html::script('ui/js/jquery.matchHeight-min.js')); ?>
 
 

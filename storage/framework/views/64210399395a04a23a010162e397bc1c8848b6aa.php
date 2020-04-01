@@ -60,7 +60,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Address<sup class="text-danger">*</sup></label>
                                     
-                                    <?php echo e(Form::text("registred_address", $value =(!empty($arrGeneral['registred_address'])) ?$arrGeneral['registred_address'] : old("registred_address") , array("class" => "form-control  ", "id"=>"registred_address","placeholder" =>'Address',"required"=>'required'))); ?>
+                                    <?php echo e(Form::text("registred_address", $value =(!empty($arrGeneral['registred_address'])) ?$arrGeneral['registred_address'] : old("registred_address") , array("class" => "form-control", "id"=>"registred_address","placeholder" =>'Address',"required"=>'required'))); ?>
 
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Telephone<sup class="text-danger">*</sup></label>
                                     
-                                    <?php echo e(Form::text("registred_telephone", $value =(!empty($arrGeneral['registred_telephone'])) ?$arrGeneral['registred_telephone'] : old("registred_telephone") , array("class" => "form-control  ", "id"=>"registred_telephone","minlength"=>"10","maxlength"=>"25","placeholder" =>'Telephone',"required"=>'required'))); ?>
+                                    <?php echo e(Form::text("registred_telephone", $value =(!empty($arrGeneral['registred_telephone'])) ?$arrGeneral['registred_telephone'] : old("registred_telephone") , array("class" => "form-control number-validation ", "id"=>"registred_telephone","minlength"=>"10","maxlength"=>"25","placeholder" =>'Telephone',"required"=>'required'))); ?>
 
                                 </div>
                             </div>
@@ -81,14 +81,14 @@
                                 <div class="form-group">
                                     <label class="control-label">Fax<sup class="text-danger">*</sup></label>
                                     
-                                    <?php echo e(Form::text("registred_fax", $value =(!empty($arrGeneral['registred_fax'])) ?$arrGeneral['registred_fax'] : old("registred_fax") , array("class" => "form-control  ", "id"=>"registred_fax","minlength"=>"10","maxlength"=>"30","placeholder" =>'Fax'))); ?>
+                                    <?php echo e(Form::text("registred_fax", $value =(!empty($arrGeneral['registred_fax'])) ?$arrGeneral['registred_fax'] : old("registred_fax") , array("class" => "form-control  number-validation", "id"=>"registred_fax","minlength"=>"10","maxlength"=>"30","placeholder" =>'Fax',"required"=>'required'))); ?>
 
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Email<sup class="text-danger">*</sup></label>
-                                    <?php echo e(Form::email("registred_mail", $value =(!empty($arrGeneral['registred_mail'])) ?$arrGeneral['registred_mail'] : old("registred_mail") , array("class" => "form-control ", "id"=>"registred_mail","placeholder" =>'Mail'))); ?>
+                                    <?php echo e(Form::email("registred_mail", $value =(!empty($arrGeneral['registred_mail'])) ?$arrGeneral['registred_mail'] : old("registred_mail") , array("class" => "form-control ", "id"=>"registred_mail","placeholder" =>'Mail',"required"=>'required'))); ?>
 
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Telephone<sup class="text-danger">*</sup></label>
                                     
-                                    <?php echo e(Form::text("service_telephone", $value =(!empty($arrGeneral['service_telephone'])) ?$arrGeneral['service_telephone'] : old("service_telephone") , array("class" => "form-control  ", "id"=>"service_telephone","minlength"=>"10","maxlength"=>"25","placeholder" =>'Telephone',"required"=>'required'))); ?>
+                                    <?php echo e(Form::text("service_telephone", $value =(!empty($arrGeneral['service_telephone'])) ?$arrGeneral['service_telephone'] : old("service_telephone") , array("class" => "form-control number-validation ", "id"=>"service_telephone","minlength"=>"10","maxlength"=>"25","placeholder" =>'Telephone',"required"=>'required'))); ?>
 
                                 </div>
                             </div>
@@ -126,18 +126,18 @@
                                 <div class="form-group">
                                     <label class="control-label">Fax<sup class="text-danger">*</sup></label>
                                     
-                                    <?php echo e(Form::text("service_fax", $value =(!empty($arrGeneral['service_fax'])) ?$arrGeneral['service_fax'] : old("service_fax") , array("class" => "form-control  ", "id"=>"service_fax","minlength"=>"10","maxlength"=>"30","placeholder" =>'Fax'))); ?>
+                                    <?php echo e(Form::text("service_fax", $value =(!empty($arrGeneral['service_fax'])) ?$arrGeneral['service_fax'] : old("service_fax") , array("class" => "form-control number-validation ", "id"=>"service_fax","minlength"=>"10","maxlength"=>"30","placeholder" =>'Fax',"required"=>'required'))); ?>
 
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Email<sup class="text-danger">*</sup></label>
                                     <?php echo e(Form::email("service_mail", $value =(!empty($arrGeneral['service_mail'])) ?$arrGeneral['service_mail'] : old("service_mail") , array("class" => "form-control ", "id"=>"service_mail","placeholder" =>'Mail'))); ?>
 
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!--end contact no and contact email -->
                     </div>
                     <div class="form-actions">
@@ -156,41 +156,19 @@
 <?php $__env->startSection('extra-script'); ?>
 <script src="<?php echo e(asset('js/jquery.validate.min.js')); ?>"></script>
 <script>
-jQuery(document).ready(function ($) {
-    $('body').on('keypress', '#pagination_rows', function(event) {
-        if (($(this).val().length === 0 && event.which == 48) ||(event.which != 46 || event.which != 190 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57))
-            event.preventDefault(); //stop character from entering input
-    });
-
-    $("form[name='create_form']").validate({
-        errorClass: "my-error-class",
-        validClass: "my-valid-class",
-        rules : {
-            pagination_rows : {
-                required  : true,
-                maxlength : 2
-            },
-            contact_no : {
-                digits    : true,
-                maxlength : 10,
-                minlength : 10
+jQuery(document).ready(function ($) {    
+    $('body').on('keypress', '.number-validation', function(e) {
+            var regex = new RegExp("^[a-zA-Z]+$");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) {
+                e.preventDefault();
+                return false;
             }
-        },
-        messages : {
-            pagination_rows : {
-                required  : "<?php echo e(trans('label.please_enter')); ?> <?php echo e(trans('label.pagination_rows')); ?>",
-                maxlength : "<?php echo e(trans('label.pagination_rows')); ?> <?php echo e(trans('label.must_contain_less_than')); ?> {0} <?php echo e(trans('label.digits')); ?>",
-            },
-            contact_no : {
-                maxlength : "<?php echo e(trans('label.contact_no')); ?> <?php echo e(trans('label.must_contain')); ?> {0} <?php echo e(trans('label.digits')); ?>",
-                minlength : "<?php echo e(trans('label.contact_no')); ?> <?php echo e(trans('label.must_contain')); ?> {0} <?php echo e(trans('label.digits')); ?>"
+            else
+            {
+            return true;
             }
-        },
-        submitHandler: function(form) {
-            form.submit();
-        }
-    });
-  
+        });
 });
 </script>
 <?php $__env->stopSection(); ?>

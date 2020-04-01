@@ -168,6 +168,7 @@
                                 <li><a href="<?php echo e(url('')); ?>/admin/inbox/unread">Terms & Conditions</a></li>
                                 <li><a href="<?php echo e(url('')); ?>/admin/legal_notice/index">Legal Notice</a></li>
                                 <li><a href="<?php echo e(url('')); ?>/admin/privacy_policy/index">Privacy Policy</a></li>
+                                <li><a href="<?php echo e(url('')); ?>/admin/general-settings">Contact Details</a></li>
                             </ul>
                         </li>
                     </ul>
