@@ -1059,6 +1059,7 @@ class IndexController extends Controller
 
     }
     public function favourite($id){
+        $fav_count = 0;
         $cookie_id = Cookie::get('favourites');
         $add = 0;
         if($cookie_id == null){
@@ -1069,7 +1070,7 @@ class IndexController extends Controller
             $favourite = Favourites::where('cookie_id',$cookie_id)->where('property_id',$id)->first();
             if($favourite){
                 $delete = Favourites::where('cookie_id',$cookie_id)->where('property_id',$id)->delete();
-                Session::flash('message', 'This property has been removed from your favourite list!');
+                // Session::flash('message', 'This property has been removed from your favourite list!');
             }else{
                 $add = 1;
             }
@@ -1079,10 +1080,13 @@ class IndexController extends Controller
             $fav->cookie_id = $cookie_id;
             $fav->property_id = $id;
             $fav->save();
-            Session::flash('message', 'This property has been added to your favourite list!');
+            // Session::flash('message', 'This property has been added to your favourite list!');
+            $fav_count = $this->propertyServices->getFavCount();
+            return "1"."-"."$fav_count";
         }
-
-        return redirect()->back();
+        $fav_count = $this->propertyServices->getFavCount();
+        return "2"."-"."$fav_count";
+        // return redirect()->back();
     }
     public function myFavourite(){
         $active = 'home';

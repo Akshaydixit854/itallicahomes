@@ -88,8 +88,24 @@
     <?php echo e(Html::script('ui/js/jquery.matchHeight-min.js')); ?>
 
 
+    <?php echo e(Html::script('ui/js/jquery.jscroll.min.js')); ?>
+
+
     <script>
 
+         $('ul.pagination').hide();
+              $(function() {              
+                $('.infinite-scroll').jscroll({
+                  autoTrigger: true,
+                  loadingHtml: '<img class="center-block" src="<?php echo e(url('')); ?>/ui/images/giphy.gif" alt="Loading....." />',
+                  padding: 0,
+                  nextSelector: '.pagination li.active + li a',
+                  contentSelector: 'div.infinite-scroll',
+                  callback: function() {
+                    $('ul.pagination').remove();
+                  }
+                });
+            });
         // Autosearch Start
 
         $( function() {
@@ -215,6 +231,47 @@
         // Responsive Menu  Start
 
         $(document).on('ready', function () {
+            
+            //for make property fav and unfav
+            $('body').on('click','.heart-fav',function(e) {
+                e.preventDefault();                
+                var href_arrtribute            = $(this).attr('href');
+                var url = "<?php echo e(url('/')); ?>"+href_arrtribute;
+                console.log(url);
+                var heart_element =$(this).children().first();                
+                $.ajax({
+                    type : "GET",
+                    url  : url,
+                    data : {"_token": "<?php echo e(csrf_token()); ?>"},
+                    success: function(response) {
+                        var inputData = response.split('-');
+                        console.log(response,inputData[0]);
+                        if (inputData[0] == '1'){
+                            heart_element.removeClass('far');
+                            heart_element.addClass('fas');
+                            $("#alert_message").html('This property has been added to your favourite list!');
+                            $(".Session-message").show();
+                            if(inputData[1]>0)
+                                $('.fav_property_count').html("<i style='color: red;'>&#xf004;</i><?php echo app('translator')->getFromJson('app.your_fav_properties'); ?> ("+inputData[1]+")");
+                            else
+                                $('.fav_property_count').html("<i style='color: #81817b;'>&#xf004;</i><?php echo app('translator')->getFromJson('app.your_fav_properties'); ?> ("+inputData[1]+")");
+                                // $('.fav_property_count').html("<?php echo app('translator')->getFromJson('app.your_fav_properties'); ?> ("+inputData[1]+")");
+                        } else {
+                            heart_element.removeClass('fas');
+                            heart_element.addClass('far');
+                            $("#alert_message").html('This property has been removed from your favourite list!');
+                            $(".Session-message").show();
+                            if(inputData[1]>0)
+                                $('.fav_property_count').html("<i style='color: red;'>&#xf004;</i><?php echo app('translator')->getFromJson('app.your_fav_properties'); ?> ("+inputData[1]+")");
+                            else
+                                
+                                $('.fav_property_count').html("<i style='color: #81817b;'>&#xf004;</i><?php echo app('translator')->getFromJson('app.your_fav_properties'); ?> ("+inputData[1]+")");
+                                // $('.fav_property_count').html("<?php echo app('translator')->getFromJson('app.your_fav_properties'); ?> ("+inputData[1]+")");
+                        }
+                    }
+                });
+            });
+            //
 
             $(".menu-list li ul").before("<i class='sub-menu-icon'> &#xf0dd; </i>");
 
@@ -258,452 +315,369 @@
 
     </script>
 
-    <style type="text/css">
-
-        
-
-.section {
-
-    position: relative;
-
-    width: 100%;
-
-    height: 100%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    overflow: hidden;
-
-}
+<style type="text/css">
+@media  screen and (min-width:800px) {
 
 .section {
-    z-index: 0;   
-    padding: 0px 0px ;
-
-}
-
-.section .showSingle {
-
-  z-index: 1;
-
-}
-
-
-
-.video-container {
-
-    position:absolute;
-
-}
-
-
-
-.italica-view.showSingle {
-
-    position: relative;
-
-}
-
-
-
-.showSingle.first-img {
-
-    top:12%;
-
-    left: 56%;
-
-}
-
-
-
-.showSingle.second_img {
-
-    top:8%;
-
-    left: 52%;
-
-}
-
-
-
-.third_img {
-
-    top: -1.5%;
-
-    left: 42.5%;
-
-}
-
-
-
-.showSingle.fourth_img {
-
-    top: 21.5%;
-
-    left: 30.6%;
-
-}
-
-
-
-
-
-.showSingle.fifth_img {
-
-    top: -28%;
-
-    left: 5%;
-
-}
-
-
-
-
-
-.showSingle.sixth_img {
-
-    top: 1%;
-
-    left: 12%;
-
-}
-
-
-
-
-
-.showSingle.seventh_img {
-
-    top: -6.8%;
-
-    left: 2%;
-
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    
+    .section {
+        z-index: 0;   
+        padding: 0px 0px ;
+    }
+    
+    .section .showSingle {
+      z-index: 1;
+    }
+    
+    .video-container {
+        position:absolute;
+    }
+    
+    .italica-view.showSingle {
+        position: relative;
+    }
+    
+    .showSingle.first-img {
+        top:12%;
+        left: 56%;
+    }
+    
+    .showSingle.second_img {
+        top:8%;
+        left: 52%;
+    }
+    
+    .third_img {
+        top: -1.5%;
+        left: 42.5%;
+    }
+    
+    .showSingle.fourth_img {
+        top: 21.5%;
+        left: 30.6%;
+    }
+    
+    .showSingle.fifth_img {
+        top: -28%;
+        left: 5%;
+    }
+    
+    .showSingle.sixth_img {
+        top: 1%;
+        left: 12%;
+    }
+    
+    .showSingle.seventh_img {
+        top: -6.8%;
+        left: 2%;
+    }
+    
+    .showSingle.eight_img {
+        top:-13%;
+        right: 8%;
+    }
+    
+    
+    .showSingle.nineth_img {
+        top:-18%;
+        right: 11%;
+    }
+    
+    .showSingle.tenth_img {
+        top:-32%;
+        right: 16%;
+    }
+    
+    .showSingle.twelveth_img {
+        top:-28%;
+        left: -42%;
+    }
+    
+    
+    .showSingle.thirteenth_img {
+        top:-15%;
+        left: -47%;
+    }
+    
+    .showSingle.fourteenth_img {
+        top:4%;
+        left: -54.1%;
+    }
+    
+    .showSingle.fiftheen_img {
+        top:12%;
+        left:-59%;
+    }
+    
 }
 
 
 
 
+@media  only screen and (max-device-width: 600px) {
 
-.showSingle.eight_img {
-
-    top:-13%;
-
-    right: 8%;
-
+.section {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    
+    .section {
+        z-index: 0;   
+        padding: 0px 0px ;
+    }
+    
+    .section .showSingle {
+      z-index: 1;
+    }
+    
+    .video-container {
+        position:absolute;
+    }
+    
+    .italica-view.showSingle {
+        position: relative;
+    }
+    
+    .showSingle.first-img {
+        top:8%;
+        left: 56%;
+    }
+    
+    .showSingle.second_img {
+        top:7%;
+        left: 53%;
+    }
+    
+    .third_img {
+        top: -1.5%;
+        left: 42.5%;
+    }
+    
+    .showSingle.fourth_img {
+        top: 15%;
+        left: 30.6%;
+    }
+    
+    .showSingle.fifth_img {
+        top: -20%;
+        left: 5%;
+    }
+    
+    .showSingle.sixth_img {
+        top: 1%;
+        left: 12%;
+    }
+    
+    .showSingle.seventh_img {
+        top: -6.8%;
+        left: 2%;
+    }
+    
+    .showSingle.eight_img {
+        top:-13%;
+        right: 8%;
+    }
+    
+    
+    .showSingle.nineth_img {
+        top:-14%;
+        right: 11%;
+    }
+    
+    .showSingle.tenth_img {
+        top:-22%;
+        right: 16%;
+    }
+    
+    .showSingle.twelveth_img {
+        top: -10%;
+        left:50%;
+    }
+    
+    
+    .showSingle.thirteenth_img {
+        top:-15%;
+        left: -47%;
+    }
+    
+    .showSingle.fourteenth_img {
+        top:4%;
+        left: -54.1%;
+    }
+    
+    .showSingle.fiftheen_img {
+        top:10%;
+        left:-59%;
+    }
+    
 }
-
-
-
-
-
-
-
-.showSingle.nineth_img {
-
-    top:-18%;
-
-    right: 11%;
-
-}
-
-
-
-.showSingle.tenth_img {
-
-    top:-32%;
-
-    right: 16%;
-
-}
-
-
-
-
-
-.showSingle.twelveth_img {
-
-    top:-28%;
-
-    left: -42%;
-
-}
-
-
-
-
-
-.showSingle.thirteenth_img {
-
-    top:-15%;
-
-    left: -47%;
-
-}
-
-
-
-.showSingle.fourteenth_img {
-
-    top:4%;
-
-    left: -54.1%;
-
-}
-
-
-
-.showSingle.fiftheen_img {
-
-    top:12%;
-
-    left:-59%;
-
-}
-
-
-
 
 
 .img_resp{
-
     width:100%;
-
     height:auto;
-
 }
 
+
 </style>
+
+<script>
+    document.getElementById('vid_play').play();
+</script>
 
 <?php $__env->stopSection(); ?>
 
 <?php if(Session::has('message')): ?>
 
 <div class="fav-alert-box row">
-
    <div class="col-11">
-
       <p class="fav-alert alert <?php echo e(Session::get('alert-class', 'alert-info')); ?>"><span class="fav-alert-icon"><i class="fas fa-heart"></i></span><?php echo e(Session::get('message')); ?></p>
-
    </div>
 
    <div class="col-1">
-
         <a href="javascript:void(0);" class="fav-alert-close"><i class="fas fa-times"></i></a>
-
    </div>
-
 </div>
 
 <?php endif; ?>
 
+<div class="fav-alert-box row Session-message" style="display: none;">
+   <div class="col-11">
+      <p class="fav-alert alert alert-class" id='alert_message'><span class="fav-alert-icon"><i class="fas fa-heart"></i></span></p>
+   </div>
+
+   <div class="col-1">
+        <a href="javascript:void(0);" class="fav-alert-close"><i class="fas fa-times"></i></a>
+   </div>
+</div>
+
 <?php $__env->startSection('content'); ?>
 
-<!-- frist-point1 Start-->
-
+            <!-- frist-point1 Start-->
                 <div class="targetDiv" id="output" style="z-index:10; position: absolute;">
-
                     <div class="properties-hover-view">
-
                         <span><img src=<?php echo e(asset("/ui/images/list.png")); ?> /></span>
-
                         <abbr>
-
                             <i class="property_count">7568</i>
-
                             <em class="property_name">Villas & Houses For Sale</em>
-
                             <a id="go-to-property-search" href="javascript:void(0)">Click Here</a>
-
                         </abbr>
-
                         <a href="javascript:void(0)" class="showSingle1">&#xf00d;</a>
-
                     </div>
-
                 </div>
-
-              <!--frist-point1 End-->
-
-              <div class="section">
-
+            <!--frist-point1 End-->
+              
+              
+              
+            <!-- desktop -->
+              <div class="section" id="section">
                  <div class="italica-view showSingle first-img" width="200" height="200" target="3" allocated_id="10" name="Campania" available_properties="<?php if(isset($property_count['Campania'])): ?> <?php echo e($property_count['Campania']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
                     <image id="image03" src=<?php echo e(asset("ui/images/frist-point3.png")); ?> height="auto" width="80%" "></image>
-
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle second_img" width="100px" height="100px" target="2" allocated_id="13" name="Basilicata" available_properties="<?php if(isset($property_count['Basilicata'])): ?> <?php echo e($property_count['Basilicata']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
                         <image id="image02" src=<?php echo e(asset("ui/images/frist-point2.png")); ?> height="auto" width="100%" ></image>
-
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle third_img" width="100px" height="100px" target="5" allocated_id="12" name="Puglia" available_properties="<?php if(isset($property_count['Puglia'])): ?> <?php echo e($property_count['Puglia']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
                     <image id="image05" src=<?php echo e(asset("ui/images/first-point5.png")); ?> height="auto" width="100%"  x="185" y="73"></image>
-
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle fourth_img" width="100px" height="100px" target="4" allocated_id="11" name="Sicilia" available_properties="<?php if(isset($property_count['Sicilia'])): ?> <?php echo e($property_count['Sicilia']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
                     <image id="image04" src=<?php echo e(asset("ui/images/frist-point4.png")); ?> height="auto" width="100%"  y="115" x="160"></image>
-
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle fifth_img" width="100px" height="100px" target="11" allocated_id="2" name="Lombardia" available_properties="<?php if(isset($property_count['Lombardia'])): ?> <?php echo e($property_count['Lombardia']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
-                    <image id="image011" src=<?php echo e(asset("/ui/images/first-point11.png")); ?> height="auto" width="100%" x="84"
-
-                           y="17"></image>
-
+                    <image id="image011" src=<?php echo e(asset("/ui/images/first-point11.png")); ?> height="auto" width="100%" x="84" y="17"></image>
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle sixth_img" width="100px" height="100px" target="6" allocated_id="10" name="Campania ( Napoli)" available_properties="<?php if(isset($property_count['Campania ( Napoli)'])): ?> <?php echo e($property_count['Campania ( Napoli)']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
-                    <image id="image06" src=<?php echo e(asset("ui/images/first-point6.png")); ?> height="auto" width="100%" x="143"
-
-                           y="80"></image>
-
+                    <image id="image06" src=<?php echo e(asset("ui/images/first-point6.png")); ?> height="auto" width="100%" x="143" y="80"></image>
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle seventh_img" width="100px" height="50px" target="7" allocated_id="8" name="Toscana" available_properties="<?php if(isset($property_count['Toscana'])): ?> <?php echo e($property_count['Toscana']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
-                    <image id="image07" src=<?php echo e(asset("/ui/images/first-point7.png")); ?> height="auto" width="100%" y="58"
-
-                           x="120"></image>
-
+                    <image id="image07" src=<?php echo e(asset("/ui/images/first-point7.png")); ?> height="auto" width="100%" y="58" x="120"></image>
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle eight_img" width="100px" height="100px" target="8" allocated_id="6" name="Emilia Romagna" available_properties="<?php if(isset($property_count['Emilia Romagna'])): ?> <?php echo e($property_count['Emilia Romagna']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
-                    <image id="image08" src=<?php echo e(asset("/ui/images/first-point8.png")); ?> height="auto" width="100%" x="107"
-
-                           y="54"></image>
-
+                    <image id="image08" src=<?php echo e(asset("/ui/images/first-point8.png")); ?> height="auto" width="100%" x="107" y="54"></image>
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle nineth_img" width="100px" height="100px" target="9" allocated_id="5" name="Marche" available_properties="<?php if(isset($property_count['Marche'])): ?> <?php echo e($property_count['Marche']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
-                    <image id="image09" src=<?php echo e(asset("/ui/images/first-point9.png")); ?>  height="auto" width="100%" y="37"
-
-                           x="112"></image>
-
+                    <image id="image09" src=<?php echo e(asset("/ui/images/first-point9.png")); ?>  height="auto" width="100%" y="37" x="112"></image>
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle tenth_img" width="100px" height="100px" target="10" allocated_id="1" name="Trentino Alto Adige" available_properties="<?php if(isset($property_count['Trentino Alto Adige'])): ?> <?php echo e($property_count['Trentino Alto Adige']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
-                    <image id="image010" src=<?php echo e(asset("/ui/images/first-point10.png")); ?> height="auto" width="100%" y="8"
-
-                           x="125"></image>
-
+                        <image id="image010" src=<?php echo e(asset("/ui/images/first-point10.png")); ?> height="auto" width="100%" y="8" x="125"></image>
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle twelveth_img" width="100px" height="100px" target="12" allocated_id="3" name="Piemonte" available_properties="<?php if(isset($property_count['Piemonte'])): ?> <?php echo e($property_count['Piemonte']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
-                    <image id="image012" src=<?php echo e(asset("/ui/images/first-point12.png")); ?> height="auto" width="100%" y="18"
-
-                           x="56"></image>
-
+                        <image id="image012" src=<?php echo e(asset("/ui/images/first-point12.png")); ?> height="auto" width="100%" y="18" x="56"></image>
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle thirteenth_img" width="100px" height="100px" target="13" allocated_id="4" name="Liguria" available_properties="<?php if(isset($property_count['Liguria'])): ?> <?php echo e($property_count['Liguria']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
-                    <image id="image013" src=<?php echo e(asset("/ui/images/first-point13.png")); ?> height="auto" width="100%" 
-
-                           x="67"></image>
-
+                        <image id="image013" src=<?php echo e(asset("/ui/images/first-point13.png")); ?> height="auto" width="100%" x="67"></image>
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle fourteenth_img" width="100px" height="100px" target="14" allocated_id="3" name="Piemonte" available_properties="<?php if(isset($property_count['Piemonte'])): ?> <?php echo e($property_count['Piemonte']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
-                    <image id="image014" src=<?php echo e(asset("/ui/images/first-point14.png")); ?> height="auto" width="90%" y="92"
-
-                           x="78"></image>
-
+                        <image id="image014" src=<?php echo e(asset("/ui/images/first-point14.png")); ?> height="auto" width="90%" y="92" x="78"></image>
                     </a>
-
                 </div>
 
                 <div class="italica-view showSingle fiftheen_img" width="100px" height="100px" target="15" allocated_id="14" name="Sardegna" available_properties="<?php if(isset($property_count['Sardegna'])): ?> <?php echo e($property_count['Sardegna']); ?> <?php else: ?> <?php echo e(0); ?> <?php endif; ?>">
-
                     <a href="#">
-
-                    <image id="image015" src=<?php echo e(asset("/ui/images/first-point15.png")); ?> height="auto" width="90%" x="79"
-
-                           y="100"></image>
-
+                        <image id="image015" src=<?php echo e(asset("/ui/images/first-point15.png")); ?> height="auto" width="90%" x="79" y="100"></image>
                     </a>
-
                 </div>
 
-        
 
-                <div class="video-container" style="margin-top:0px;">
-
-                    <video autoplay="autoplay" loop="loop" preload="auto" muted width="100%" height="auto" autobuffer playsinline>
-
-                        <source id="mp4_src" src="<?php echo e(url('')); ?>/video/Homepage_V2_FULL.mp4" type="video/mp4">
-
+                <!-- video -->
+                <div class="video-container" style="width:100%;">
+                    <video id="vid_play" width="100%" height="auto" controls muted autoplay loop playsinline  >
+                        <source id="mp4_src" src="<?php echo e(url('')); ?>/video/Homepage_V2_FULL.mp4" type="video/mp4" >
+                        <source id="mp4_src" src="<?php echo e(url('')); ?>/video/Homepage_V2_FULL.ogg" type="video/ogg" >
+                        Your browser does not support the video tag.
                     </video>
-
                 </div>
-
-           
-
+            <!-- desktop -->
         </div>
 
         <div class="banner-inner-content" style="margin-top:-50px;">
@@ -773,7 +747,7 @@
 
                 <span class="main-heading"><?php echo app('translator')->getFromJson('app.recently_added_properties'); ?></span>
 
-                <div class="wrapper">
+                <div class="wrapper infinite-scroll">
 
                     <div class="row">
 
@@ -899,9 +873,7 @@
                                         <?php if(\Lang::has('property.property_title_'.$property->id)): ?>
 
                                             <span><em><?php echo e((new \App\Services\PropertyService)->truncate(trans('property.property_title_'.$property->id))); ?></em><i><a class="heart-fav" href="/favourite/<?php echo e($property->id); ?>"><?php echo (new \App\Services\PropertyService)->checkFav($property->id); ?></a></i></span>
-
                                         <?php else: ?>
-
                                             <span><em><?php echo e((new \App\Services\PropertyService)->truncate($property->name)); ?></em><i><a  class="heart-fav"href="/favourite/<?php echo e($property->id); ?>"><?php echo (new \App\Services\PropertyService)->checkFav($property->id); ?></a></i></span>
 
                                         <?php endif; ?>
@@ -952,15 +924,16 @@
 
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                        
+                         <?php echo e($properties->links()); ?>
+
 
                     </div>
 
-                    <div class="properties-view-all">
+                   <!--  <div class="properties-view-all">
 
                         <a href="/<?php echo e(__('route.search')); ?>"><?php echo app('translator')->getFromJson('app.view_all'); ?></a>
 
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -1106,5 +1079,7 @@
 
 <?php $__env->stopSection(); ?>
 
-
+<script>
+    document.getElementById('vid_play').play();
+</script>
 <?php echo $__env->make('ui.layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

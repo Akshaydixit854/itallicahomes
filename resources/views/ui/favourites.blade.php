@@ -4,7 +4,7 @@
 
 <title>{{ __('app.your_fav_properties')}}</title>
 @php
-if($properties){
+if(!$properties->isEmpty()){
         $meta_descr = strip_tags($properties[0]->short_description);
     $meta_descr= substr($meta_descr,0,160);
     $metakey= preg_replace('/[[:space:]]+/', ',',$meta_descr);
@@ -46,6 +46,15 @@ if($properties){
    </div>
 </div>
     @endif
+    <div class="fav-alert-box row Session-message" style="display: none;">
+       <div class="col-11">
+          <p class="fav-alert alert alert-class" id='alert_message'><span class="fav-alert-icon"><i class="fas fa-heart"></i></span></p>
+       </div>
+
+       <div class="col-1">
+            <a href="javascript:void(0);" class="fav-alert-close"><i class="fas fa-times"></i></a>
+       </div>
+    </div>
 @section('content')
 <!--@php
     $lang1 =Session::get('language');
@@ -58,7 +67,7 @@ if($properties){
     <div class="wrapper">
         <div class="about-us-text-wrapper properties-text-wrapper remove-shadow-section">
             <div class="main-container-wrapper">
-                <span class="main-heading">@lang('app.your_fav_properties')<p>There are <abbr>{{count($properties)}}</abbr>propertie(s)</p></span>
+                <span class="main-heading">@lang('app.your_fav_properties')<p>There are <abbr class="property_count">{{count($properties)}}</abbr>propertie(s)</p></span>
             </div>
         </div>
     </div>
@@ -223,6 +232,50 @@ if($properties){
           });
 
         $(document).ready(function(){
+            
+            //for make property fav and unfav
+            $('body').on('click','.heart-fav',function(e) {
+                e.preventDefault();                
+                var href_arrtribute            = $(this).attr('href');
+                var url = "{{url('/')}}"+href_arrtribute;
+                var main_div = $(this).parent().parent().parent().parent();
+                console.log(url);
+                var heart_element =$(this).children().first();                
+                $.ajax({
+                    type : "GET",
+                    url  : url,
+                    data : {"_token": "{{ csrf_token() }}"},
+                    success: function(response) {
+                        var inputData = response.split('-');
+                        console.log(response,inputData[0]);
+                        if (inputData[0] == '1'){
+                            heart_element.removeClass('far');
+                            heart_element.addClass('fas');
+                            $("#alert_message").html('This property has been added to your favourite list!');
+                            $(".Session-message").show();
+                            if(inputData[1]>0)
+                                $('.fav_property_count').html("<i style='color: red;'>&#xf004;</i>@lang('app.your_fav_properties') ("+inputData[1]+")");
+                            else
+                                
+                                $('.fav_property_count').html("<i style='color: #81817b;'>&#xf004;</i>@lang('app.your_fav_properties') ("+inputData[1]+")");
+                        } else {
+                            heart_element.removeClass('fas');
+                            heart_element.addClass('far');
+                            $("#alert_message").html('This property has been removed from your favourite list!');
+                            $(".Session-message").show();
+                            if(inputData[1]>0)
+                                $('.fav_property_count').html("<i style='color: red;'>&#xf004;</i>@lang('app.your_fav_properties') ("+inputData[1]+")");
+                            else
+                                
+                                $('.fav_property_count').html("<i style='color: #81817b;'>&#xf004;</i>@lang('app.your_fav_properties') ("+inputData[1]+")");
+                            $('.property_count').html(inputData[1]);
+                            main_div.attr('style','display:none');
+                        }
+                    }
+                });
+            });
+            //
+
             $('.price-location-adv-filter-wrapper').hide();
             $('.show-all-filter').on('click', function(event) {
                 alert('not working');

@@ -502,7 +502,7 @@ ul.properties-list>li {
 }
 
 .map-hover-view {
-    padding-top: 40px;
+    padding: 53px 10px 0 0px;
 }
 
 .gm-style-iw div {
@@ -521,11 +521,11 @@ ul.properties-list>li {
 }
 
 .gm-style div div:nth-child(3) div:nth-child(1) div:nth-child(4) div:nth-child(1) div:nth-child(1) div:nth-child(3) div div {
-    display: none;
+    /*display: none;*/
 }
 
 .gm-style div:nth-child(1) div:nth-child(3) div:nth-child(1) div:nth-child(4) div:nth-child(1) div:nth-child(1) div:nth-child(1) {
-    display: none;
+    /*display: none;*/
 }
 
 .gm-style-iw div:nth-child(1) div:nth-child(1) {

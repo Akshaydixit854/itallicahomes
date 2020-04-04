@@ -14,7 +14,7 @@
                 <div class="col-md-12">
                     <div class="top-header-menu">
                         <ul class="top-notice">
-                                <li><a href="<?php echo e(url(''.__('route.your_fav_properties').'')); ?>"><i <?php if((new \App\Services\PropertyService)->getFavCount() > 0): ?> style="color: red;" <?php endif; ?>;>&#xf004;</i><?php echo app('translator')->getFromJson('app.your_fav_properties'); ?> (<?php echo e((new \App\Services\PropertyService)->getFavCount()); ?>)</a></li>
+                                <li><a href="<?php echo e(url(''.__('route.your_fav_properties').'')); ?>" class="fav_property_count"><i <?php if((new \App\Services\PropertyService)->getFavCount() > 0): ?> style="color: red;" <?php endif; ?>;>&#xf004;</i><?php echo app('translator')->getFromJson('app.your_fav_properties'); ?> (<?php echo e((new \App\Services\PropertyService)->getFavCount()); ?>)</a></li>
                                 <li><a href="http://italicarentals.com" target="_blank"><?php echo app('translator')->getFromJson('app.holiday_villas'); ?></a></li>
                                 <li><a href="http://livingart-online.com" target="_blank"><?php echo app('translator')->getFromJson('app.luxury_properties'); ?></a></li>
                                 <li><a href="<?php echo e(url(''.__('route.legal_notice').'')); ?>"><?php echo app('translator')->getFromJson('app.legal_notice'); ?></a></li>

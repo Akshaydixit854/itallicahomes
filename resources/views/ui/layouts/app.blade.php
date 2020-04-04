@@ -14,7 +14,7 @@
                 <div class="col-md-12">
                     <div class="top-header-menu">
                         <ul class="top-notice">
-                                <li><a href="{{url(''.__('route.your_fav_properties').'')}}"><i @if((new \App\Services\PropertyService)->getFavCount() > 0) style="color: red;" @endif;>&#xf004;</i>@lang('app.your_fav_properties') ({{(new \App\Services\PropertyService)->getFavCount()}})</a></li>
+                                <li><a href="{{url(''.__('route.your_fav_properties').'')}}" class="fav_property_count"><i @if((new \App\Services\PropertyService)->getFavCount() > 0) style="color: red;" @endif;>&#xf004;</i>@lang('app.your_fav_properties') ({{(new \App\Services\PropertyService)->getFavCount()}})</a></li>
                                 <li><a href="http://italicarentals.com" target="_blank">@lang('app.holiday_villas')</a></li>
                                 <li><a href="http://livingart-online.com" target="_blank">@lang('app.luxury_properties')</a></li>
                                 <li><a href="{{url(''.__('route.legal_notice').'')}}">@lang('app.legal_notice')</a></li>
